@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://ci35qaoq4rw21"]
+
+[ext_resource type="Script" path="res://scripts/main_gameplay/level.gd" id="1_33fw1"]
+[ext_resource type="PackedScene" uid="uid://bjx6tefqovs8d" path="res://scenes/main_gameplay/maincharacter_inherit.tscn" id="2_poliv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nbw7s"]
+
+[sub_resource type="Sky" id="Sky_0egn6"]
+sky_material = SubResource("ProceduralSkyMaterial_nbw7s")
+
+[sub_resource type="Environment" id="Environment_iri8j"]
+background_mode = 2
+sky = SubResource("Sky_0egn6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_nabtc"]
+size = Vector3(200, 1, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dsfem"]
+data = PackedVector3Array(-100, 0.5, 50, 100, 0.5, 50, -100, -0.5, 50, 100, 0.5, 50, 100, -0.5, 50, -100, -0.5, 50, 100, 0.5, -50, -100, 0.5, -50, 100, -0.5, -50, -100, 0.5, -50, -100, -0.5, -50, 100, -0.5, -50, 100, 0.5, 50, 100, 0.5, -50, 100, -0.5, 50, 100, 0.5, -50, 100, -0.5, -50, 100, -0.5, 50, -100, 0.5, -50, -100, 0.5, 50, -100, -0.5, -50, -100, 0.5, 50, -100, -0.5, 50, -100, -0.5, -50, 100, 0.5, 50, -100, 0.5, 50, 100, 0.5, -50, -100, 0.5, 50, -100, 0.5, -50, 100, 0.5, -50, -100, -0.5, 50, 100, -0.5, 50, -100, -0.5, -50, 100, -0.5, 50, 100, -0.5, -50, -100, -0.5, -50)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ofu16"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_33fw1")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99863, 0.052336, 0, -0.052336, 0.99863, 0, 22.1783, 103.498)
+fov = 22.8952
+near = 0.1
+far = 1000.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iri8j")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.54996, 0)
+mesh = SubResource("BoxMesh_nabtc")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dsfem")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0955331, 0.995426, 0, -0.995426, -0.0955331, -2.62382, 1.18937, 0)
+mesh = SubResource("TorusMesh_ofu16")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.833462, 0.552577, 0, -0.552577, 0.833462, 0, 6.88382, 9.80712)
+
+[node name="maincharacter" parent="." instance=ExtResource("2_poliv")]
+transform = Transform3D(0.984668, 0, 0, 0, 0.984668, 0, 0, 0, 0.984668, 0, 0.558827, 0)

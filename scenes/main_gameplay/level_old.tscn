@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://be455c7hiltc1"]
+
+[ext_resource type="Script" path="res://scripts/main_gameplay/level.gd" id="1_4lrjx"]
+[ext_resource type="PackedScene" uid="uid://doe3orcaoyssv" path="res://scenes/main_gameplay/humancharacter.tscn" id="2_g81b1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nbw7s"]
+
+[sub_resource type="Sky" id="Sky_0egn6"]
+sky_material = SubResource("ProceduralSkyMaterial_nbw7s")
+
+[sub_resource type="Environment" id="Environment_iri8j"]
+background_mode = 2
+sky = SubResource("Sky_0egn6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_nabtc"]
+size = Vector3(25, 0.1, 25)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gc3rx"]
+data = PackedVector3Array(-12.5, 0.05, 12.5, 12.5, 0.05, 12.5, -12.5, -0.05, 12.5, 12.5, 0.05, 12.5, 12.5, -0.05, 12.5, -12.5, -0.05, 12.5, 12.5, 0.05, -12.5, -12.5, 0.05, -12.5, 12.5, -0.05, -12.5, -12.5, 0.05, -12.5, -12.5, -0.05, -12.5, 12.5, -0.05, -12.5, 12.5, 0.05, 12.5, 12.5, 0.05, -12.5, 12.5, -0.05, 12.5, 12.5, 0.05, -12.5, 12.5, -0.05, -12.5, 12.5, -0.05, 12.5, -12.5, 0.05, -12.5, -12.5, 0.05, 12.5, -12.5, -0.05, -12.5, -12.5, 0.05, 12.5, -12.5, -0.05, 12.5, -12.5, -0.05, -12.5, 12.5, 0.05, 12.5, -12.5, 0.05, 12.5, 12.5, 0.05, -12.5, -12.5, 0.05, 12.5, -12.5, 0.05, -12.5, 12.5, 0.05, -12.5, -12.5, -0.05, 12.5, 12.5, -0.05, 12.5, -12.5, -0.05, -12.5, 12.5, -0.05, 12.5, 12.5, -0.05, -12.5, -12.5, -0.05, -12.5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ofu16"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_4lrjx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iri8j")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nabtc")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_gc3rx")
+
+[node name="humancharacter" parent="." instance=ExtResource("2_g81b1")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02249, 9.39511)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0955331, 0.995426, 0, -0.995426, -0.0955331, -2.62382, 1.18937, 0)
+mesh = SubResource("TorusMesh_ofu16")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.833462, 0.552577, 0, -0.552577, 0.833462, 0, 6.88382, 9.80712)
