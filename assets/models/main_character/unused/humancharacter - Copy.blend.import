@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cav5d7jitd3ox"
-path="res://.godot/imported/humancharacter - Copy.blend-fd5b0f6e243c4ede93221b23e2b9d94c.scn"
+path="res://.godot/imported/humancharacter - Copy.blend-b170719d5400ecf0af22fe206eba16c6.scn"
 
 [deps]
 
-source_file="res://assets/models/main_character/humancharacter - Copy.blend"
-dest_files=["res://.godot/imported/humancharacter - Copy.blend-fd5b0f6e243c4ede93221b23e2b9d94c.scn"]
+source_file="res://assets/models/main_character/unused/humancharacter - Copy.blend"
+dest_files=["res://.godot/imported/humancharacter - Copy.blend-b170719d5400ecf0af22fe206eba16c6.scn"]
 
 [params]
 

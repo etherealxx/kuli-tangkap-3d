@@ -5,12 +5,12 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nbw7s"]
 
-[sub_resource type="Sky" id="Sky_0egn6"]
+[sub_resource type="Sky" id="Sky_3s04e"]
 sky_material = SubResource("ProceduralSkyMaterial_nbw7s")
 
 [sub_resource type="Environment" id="Environment_iri8j"]
 background_mode = 2
-sky = SubResource("Sky_0egn6")
+sky = SubResource("Sky_3s04e")
 
 [sub_resource type="BoxMesh" id="BoxMesh_nabtc"]
 size = Vector3(200, 1, 100)
