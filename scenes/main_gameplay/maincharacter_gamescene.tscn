@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ce5g0fw0e43hw"]
+[gd_scene load_steps=17 format=3 uid="uid://ce5g0fw0e43hw"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/maincharacter_gamescene.gd" id="1_jxpor"]
 
@@ -2473,6 +2473,9 @@ _data = {
 radius = 1.9408
 height = 20.7934
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2yjo"]
+size = Vector3(6.17282, 10.8863, 6.26794)
+
 [node name="maincharacter" type="CharacterBody3D"]
 script = ExtResource("1_jxpor")
 
@@ -2786,3 +2789,10 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574883, 10.1487, 0)
 shape = SubResource("CapsuleShape3D_bhhhh")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.1254, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.624588, 2.23123, 0.912292)
+shape = SubResource("BoxShape3D_p2yjo")

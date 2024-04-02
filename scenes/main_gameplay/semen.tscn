@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://tjlj2kgb62nl"]
+
+[ext_resource type="PackedScene" uid="uid://t5340f2s4yov" path="res://assets/models/objects/semen.blend" id="1_6ajmy"]
+[ext_resource type="Script" path="res://scripts/main_gameplay/semen.gd" id="2_0wleq"]
+
+[node name="semen" instance=ExtResource("1_6ajmy")]
+transform = Transform3D(1.52855e-16, 3.49691e-09, -0.08, 0.08, -3.49691e-09, 0, -3.49691e-09, -0.08, -3.49691e-09, 0, 0, 0)
+script = ExtResource("2_0wleq")
