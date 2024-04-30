@@ -2,26 +2,18 @@ extends CharacterBody3D
 
 @onready var animplyr : AnimationPlayer = $AnimationPlayer
 
-var speed = 7.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY := 4.5
+
+var speed := 7.0
+var score := 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	animplyr.play("moving_sideway3")
+	animplyr.play("moving_sideway3", -1, 2.0)
 	animplyr.pause()
 	print(animplyr.get_current_animation_length())
-
-
-func _process(delta):
-	if animplyr.get_current_animation() == "moving_sideway3":
-		if animplyr.get_current_animation_position() > 0.5:
-			speed = 1.0
-		else:
-			speed = 2.0
-
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -53,3 +45,18 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+	
+	if animplyr.get_current_animation() == "moving_sideway3":
+		if animplyr.get_current_animation_position() > 0.5:
+			speed = 1.5
+		else:
+			speed = 3.0
+
+func add_score():
+	score += 1
+	$ScoreLabel.set_text("Score: " + str(score))
+
+func _on_area_3d_body_entered(body):
+	if body is StaticBody3D:
+		body.catched()
+		add_score()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8kll4qow8gaf"]
+[gd_scene load_steps=14 format=3 uid="uid://8kll4qow8gaf"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/gamescene.gd" id="1_4cdgf"]
 [ext_resource type="PackedScene" uid="uid://c0nini266ff55" path="res://assets/models/environment/lahan.fbx" id="2_x46d2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ot380bdhna2g" path="res://assets/models/environment/Barrier.FBX" id="4_163b2"]
 [ext_resource type="PackedScene" uid="uid://ce5g0fw0e43hw" path="res://scenes/main_gameplay/maincharacter_gamescene.tscn" id="4_rdpe2"]
 [ext_resource type="PackedScene" uid="uid://u2rhwop4b57x" path="res://scenes/main_gameplay/low_poly_truck.tscn" id="5_yqbdp"]
-[ext_resource type="PackedScene" uid="uid://tjlj2kgb62nl" path="res://scenes/main_gameplay/semen.tscn" id="6_h5fug"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6vew0"]
 
@@ -39,6 +38,9 @@ environment = SubResource("Environment_6xa0r")
 [node name="Root Scene2" parent="." instance=ExtResource("2_x46d2")]
 transform = Transform3D(-5.28908e-08, 0, -1.21, 0, 1.21, 0, 1.21, 0, -5.28908e-08, 0.732864, 0, -2.47621)
 
+[node name="dasar" parent="Root Scene2/RootNode" index="0"]
+transform = Transform3D(495.2, 1.81899e-12, 1.27866e-06, 4.32918e-05, -8.85487e-05, -14.6261, -1.81899e-12, -495.2, 1.74357e-06, 2.01399, 0.167433, -0.233774)
+
 [node name="Sun" parent="Root Scene2/RootNode" index="6"]
 transform = Transform3D(0.804219, 0.503674, 0.315504, -0.411246, 0.854844, -0.316416, -0.429078, 0.124718, 0.894616, 19.9873, 17.2627, 0)
 visible = false
@@ -56,6 +58,7 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0.577, 2.902, 9.566)
+current = true
 
 [node name="16758VocationalTruckV1New" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0185341, 0.00243126, -0.000338494, -0.000335619, 4.40257e-05, 0.0186929, 0.00243166, 0.0185372, -1.4796e-11, -2.51406, 0.33541, 0.641713)
@@ -64,7 +67,7 @@ material_override = SubResource("StandardMaterial3D_0e88e")
 mesh = ExtResource("3_w0bv2")
 
 [node name="Root Scene" parent="." instance=ExtResource("4_163b2")]
-transform = Transform3D(-2.27358e-08, 0, -0.520134, 0, 0.520134, 0, 0.520134, 0, -2.27358e-08, -4.6612, 0.392156, 0.759492)
+transform = Transform3D(-2.27358e-08, 0, -0.520134, 0, 0.520134, 0, 0.520134, 0, -2.27358e-08, 4.66674, 0.392156, 4.41587)
 
 [node name="RootNode" parent="Root Scene" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00769711, -3.69549e-06, 0.0436449)
@@ -88,13 +91,20 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.11436, 0.406561, 5.56
 [node name="low poly truck" parent="." instance=ExtResource("5_yqbdp")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.99422, 2.68683, 3.32343)
 
-[node name="semen" parent="." instance=ExtResource("6_h5fug")]
-transform = Transform3D(1.52855e-16, 3.49691e-09, -0.08, 0.08, -3.49691e-09, 0, -3.49691e-09, -0.08, -3.49691e-09, 1.01452, 3.18087, 5.65559)
-visible = false
-
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 
