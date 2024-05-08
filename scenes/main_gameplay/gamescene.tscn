@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8kll4qow8gaf"]
+[gd_scene load_steps=15 format=3 uid="uid://8kll4qow8gaf"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/gamescene.gd" id="1_4cdgf"]
 [ext_resource type="PackedScene" uid="uid://c0nini266ff55" path="res://assets/models/environment/lahan.fbx" id="2_x46d2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ot380bdhna2g" path="res://assets/models/environment/Barrier.FBX" id="4_163b2"]
 [ext_resource type="PackedScene" uid="uid://ce5g0fw0e43hw" path="res://scenes/main_gameplay/maincharacter_gamescene.tscn" id="4_rdpe2"]
 [ext_resource type="PackedScene" uid="uid://u2rhwop4b57x" path="res://scenes/main_gameplay/low_poly_truck.tscn" id="5_yqbdp"]
+[ext_resource type="PackedScene" uid="uid://b4wyq7ufthgd3" path="res://scenes/main_gameplay/run_track.tscn" id="8_380tc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6vew0"]
 
@@ -105,6 +106,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RunTrack" parent="." instance=ExtResource("8_380tc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0437298, -1.90735e-06, 0.166111)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 

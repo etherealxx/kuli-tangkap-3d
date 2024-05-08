@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4wyq7ufthgd3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdhg4"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_seg7l"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2.00001, 2.00001, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 6, 0, 4, 0, 0, 0, 2, 0, 6, 0, 3, 0, 6, 0, 2, 0, 3, 0, 7, 0, 6, 0, 7, 0, 4, 0, 6, 0, 7, 0, 5, 0, 4, 0, 5, 0, 3, 0, 1, 0, 5, 0, 7, 0, 3, 0, 1, 0, 2, 0, 0, 0, 1, 0, 3, 0, 2, 0, 5, 0, 0, 0, 4, 0, 5, 0, 1, 0, 0, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_60ib2"]
+resource_name = "blocktest_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2.00001, 2.00001, 2),
+"attribute_data": PackedByteArray(255, 159, 255, 127, 255, 159, 255, 127, 255, 159, 255, 127, 255, 95, 255, 127, 255, 95, 255, 127, 255, 95, 255, 127, 255, 159, 255, 63, 255, 159, 255, 63, 255, 159, 255, 63, 255, 95, 255, 63, 255, 95, 255, 63, 255, 95, 255, 63, 255, 159, 255, 191, 255, 159, 255, 191, 255, 223, 255, 127, 255, 95, 255, 191, 255, 31, 255, 127, 255, 95, 255, 191, 255, 159, 255, 255, 255, 159, 0, 0, 255, 223, 255, 63, 255, 95, 255, 255, 255, 31, 255, 63, 255, 95, 0, 0),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(1, 0, 20, 0, 14, 0, 1, 0, 7, 0, 20, 0, 10, 0, 19, 0, 6, 0, 10, 0, 23, 0, 19, 0, 21, 0, 12, 0, 18, 0, 21, 0, 15, 0, 12, 0, 16, 0, 9, 0, 3, 0, 16, 0, 22, 0, 9, 0, 5, 0, 8, 0, 2, 0, 5, 0, 11, 0, 8, 0, 17, 0, 0, 0, 13, 0, 17, 0, 4, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_qdhg4"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 0, 0, 255, 255, 254, 255, 254, 255, 0, 0, 255, 255, 254, 255, 254, 255, 0, 0, 84, 213, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 84, 213, 254, 255, 254, 255, 255, 255, 255, 191, 254, 255, 254, 255, 255, 255, 255, 255, 254, 255, 254, 255, 255, 255, 84, 213, 254, 255, 0, 0, 255, 255, 255, 191, 254, 255, 0, 0, 255, 255, 255, 191, 254, 255, 0, 0, 255, 255, 84, 213, 0, 0, 254, 255, 0, 0, 84, 213, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 255, 255, 84, 213, 0, 0, 254, 255, 255, 255, 255, 191, 0, 0, 254, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 255, 255, 255, 191, 255, 191, 255, 191, 255, 127, 255, 191, 170, 42, 170, 42, 0, 0, 255, 127, 255, 191, 255, 191, 170, 42, 170, 42, 255, 255, 255, 255, 255, 127, 255, 191, 170, 42, 170, 42, 0, 0, 255, 127, 255, 255, 255, 255, 170, 42, 170, 42, 84, 213, 84, 213, 255, 191, 255, 191, 255, 127, 255, 191, 84, 213, 84, 213, 0, 0, 255, 127, 255, 191, 255, 191, 84, 213, 84, 213, 255, 255, 255, 255, 255, 127, 255, 191, 84, 213, 84, 213, 0, 0, 255, 127, 255, 255, 255, 255)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_seg7l")
+
+[node name="RunTrack" type="Node3D"]
+
+[node name="blocktest" type="Node3D" parent="."]
+transform = Transform3D(3.02084, 0, 0, 0, 0.276447, 0, 0, 0, 21.04, -0.00355911, 0.183683, 29.6428)
+
+[node name="Cube" type="MeshInstance3D" parent="blocktest"]
+mesh = SubResource("ArrayMesh_60ib2")
+skeleton = NodePath("")
+
+[node name="blocktest6" type="Node3D" parent="."]
+transform = Transform3D(3.02084, 0, 0, 0, 0.276447, 0, 0, 0, 19.0848, 16.1308, 0.212091, -2.93441)
+
+[node name="Cube" type="MeshInstance3D" parent="blocktest6"]
+mesh = SubResource("ArrayMesh_60ib2")
+skeleton = NodePath("")
+
+[node name="blocktest5" type="Node3D" parent="."]
+transform = Transform3D(3.02084, 0, 0, 0, 0.276447, 0, 0, 0, 32.2886, -18.9345, 0.183683, 13.0693)
+
+[node name="Cube" type="MeshInstance3D" parent="blocktest5"]
+mesh = SubResource("ArrayMesh_60ib2")
+skeleton = NodePath("")
+
+[node name="blocktest2" type="Node3D" parent="."]
+transform = Transform3D(-1.32045e-07, 0, -13.6429, 0, 0.276447, 0, 3.02084, 0, -5.96351e-07, -11.2471, 0.183683, 47.5916)
+
+[node name="Cube" type="MeshInstance3D" parent="blocktest2"]
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 0.791688, 0, 0, 0)
+mesh = SubResource("ArrayMesh_60ib2")
+skeleton = NodePath("")
+
+[node name="blocktest3" type="Node3D" parent="."]
+transform = Transform3D(-1.32045e-07, 0, -19.9493, 0, 0.276447, 0, 3.02084, 0, -8.72011e-07, -1.88376, 0.183683, -18.9822)
+
+[node name="Cube" type="MeshInstance3D" parent="blocktest3"]
+mesh = SubResource("ArrayMesh_60ib2")
+skeleton = NodePath("")
+
+[node name="blocktest4" type="Node3D" parent="."]
+transform = Transform3D(-1.32045e-07, 0, -9.20975, 0, 0.276447, 0, 3.02084, 0, -4.02571e-07, 9.95183, 0.183683, 15.0421)
+
+[node name="Cube" type="MeshInstance3D" parent="blocktest4"]
+mesh = SubResource("ArrayMesh_60ib2")
+skeleton = NodePath("")
