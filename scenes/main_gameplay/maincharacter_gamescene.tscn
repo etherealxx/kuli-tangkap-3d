@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ce5g0fw0e43hw"]
+[gd_scene load_steps=19 format=3 uid="uid://ce5g0fw0e43hw"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/maincharacter_gamescene.gd" id="1_jxpor"]
 
@@ -2476,6 +2476,12 @@ height = 20.7934
 [sub_resource type="BoxShape3D" id="BoxShape3D_p2yjo"]
 size = Vector3(6.17282, 2.70536, 6.26794)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynuqv"]
+size = Vector3(6.17282, 3.25471, 4.78488)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a55rc"]
+size = Vector3(5.33765, 16.681, 3.78613)
+
 [node name="maincharacter" type="CharacterBody3D"]
 script = ExtResource("1_jxpor")
 
@@ -2790,12 +2796,26 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574883, 10.1487, 0)
 shape = SubResource("CapsuleShape3D_bhhhh")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="CatchHitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.1254, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatchHitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.624588, -1.85924, 0.912292)
 shape = SubResource("BoxShape3D_p2yjo")
+
+[node name="DeathHitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.1254, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.624588, -4.94824, 0.675826)
+shape = SubResource("BoxShape3D_ynuqv")
+
+[node name="DestroyHitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.1254, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DestroyHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.624588, -15.8219, 0.287343)
+shape = SubResource("BoxShape3D_a55rc")
 
 [node name="ScoreLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.767067, 24.4556, 0)
@@ -2804,4 +2824,6 @@ text = "Score: 0"
 font_size = 417
 outline_size = 97
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="CatchHitbox" to="." method="_on_catch_hitbox_body_entered"]
+[connection signal="body_entered" from="DeathHitbox" to="." method="_on_death_hitbox_body_entered"]
+[connection signal="body_entered" from="DestroyHitbox" to="." method="_on_destroy_hitbox_body_entered"]

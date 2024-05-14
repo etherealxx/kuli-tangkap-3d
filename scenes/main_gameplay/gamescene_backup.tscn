@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8kll4qow8gaf"]
+[gd_scene load_steps=14 format=3 uid="uid://8kll4qow8gaf"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/gamescene.gd" id="1_4cdgf"]
 [ext_resource type="PackedScene" uid="uid://c0nini266ff55" path="res://assets/models/environment/lahan.fbx" id="2_x46d2"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ot380bdhna2g" path="res://assets/models/environment/Barrier.FBX" id="4_163b2"]
 [ext_resource type="PackedScene" uid="uid://ce5g0fw0e43hw" path="res://scenes/main_gameplay/maincharacter_gamescene.tscn" id="4_rdpe2"]
 [ext_resource type="PackedScene" uid="uid://u2rhwop4b57x" path="res://scenes/main_gameplay/low_poly_truck.tscn" id="5_yqbdp"]
-[ext_resource type="Script" path="res://scripts/main_gameplay/gameoverui.gd" id="7_pbo13"]
-[ext_resource type="PackedScene" uid="uid://bbf15spwf84ah" path="res://scenes/main_gameplay/runtrack_fromblender.tscn" id="8_fx7ic"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6vew0"]
 
@@ -30,9 +28,6 @@ size = Vector3(20, 0.2, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lf0cb"]
 data = PackedVector3Array(-10, 0.1, 10, 10, 0.1, 10, -10, -0.1, 10, 10, 0.1, 10, 10, -0.1, 10, -10, -0.1, 10, 10, 0.1, -10, -10, 0.1, -10, 10, -0.1, -10, -10, 0.1, -10, -10, -0.1, -10, 10, -0.1, -10, 10, 0.1, 10, 10, 0.1, -10, 10, -0.1, 10, 10, 0.1, -10, 10, -0.1, -10, 10, -0.1, 10, -10, 0.1, -10, -10, 0.1, 10, -10, -0.1, -10, -10, 0.1, 10, -10, -0.1, 10, -10, -0.1, -10, 10, 0.1, 10, -10, 0.1, 10, 10, 0.1, -10, -10, 0.1, 10, -10, 0.1, -10, 10, 0.1, -10, -10, -0.1, 10, 10, -0.1, 10, -10, -0.1, -10, 10, -0.1, 10, 10, -0.1, -10, -10, -0.1, -10)
-
-[sub_resource type="LabelSettings" id="LabelSettings_am2wf"]
-font_size = 166
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_4cdgf")
@@ -62,7 +57,7 @@ transform = Transform3D(0.00295715, 0.589047, -0.808093, 0.00405682, 0.808083, 0
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0.575, 2.902, 9.55)
+transform = Transform3D(1, 0, 0, 0, 0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0.577, 2.902, 9.566)
 current = true
 
 [node name="16758VocationalTruckV1New" type="MeshInstance3D" parent="."]
@@ -101,78 +96,17 @@ wait_time = 2.0
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GameOverUI" type="Control" parent="CanvasLayer"]
-process_mode = 2
 visible = false
+
+[node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_pbo13")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOverUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.141176, 0.141176, 0.141176, 0.34902)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ReferenceRect" type="ReferenceRect" parent="CanvasLayer/GameOverUI/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-
-[node name="GameOver" type="Label" parent="CanvasLayer/GameOverUI/VBoxContainer"]
-layout_mode = 2
-text = "Game Over"
-label_settings = SubResource("LabelSettings_am2wf")
-horizontal_alignment = 1
-
-[node name="Retry" type="Button" parent="CanvasLayer/GameOverUI/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 71
-text = "Retry"
-
-[node name="DebugUI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DebugUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="DebugButton" type="Button" parent="CanvasLayer/DebugUI/HBoxContainer"]
-layout_mode = 2
-text = "DebugButton"
-
-[node name="DebugButton2" type="Button" parent="CanvasLayer/DebugUI/HBoxContainer"]
-layout_mode = 2
-text = "DebugButton2"
-
-[node name="racetrackx" parent="." instance=ExtResource("8_fx7ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187796, 9.499)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/GameOverUI/VBoxContainer/Retry" to="CanvasLayer/GameOverUI" method="_on_retry_pressed"]
-[connection signal="pressed" from="CanvasLayer/DebugUI/HBoxContainer/DebugButton" to="." method="_on_debug_button_pressed"]
 
 [editable path="Root Scene2"]
 [editable path="Root Scene"]

@@ -1,6 +1,7 @@
 extends Node3D
 @export var speed = -1
 var is_catched := false
+var catchable_name : String = "semen"
 #signal catched
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +22,7 @@ func catched():
 
 func _physics_process(delta):
 	if is_catched:
-		if get_scale() < Vector3(0.05, 0.05, 0.05):
+		if get_scale() < Vector3(0.5, 0.5, 0.5):
 			queue_free()
-		scale -= Vector3(0.015, 0.015, 0.015)
+		scale -= Vector3(0.15, 0.15, 0.15)
 		
