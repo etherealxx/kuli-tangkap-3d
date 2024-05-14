@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://daf1kasf8li46"]
+
+[ext_resource type="PackedScene" uid="uid://v4klca5c73vu" path="res://assets/models/environment/Gedung 3.blend" id="1_7ceyx"]
+
+[node name="Gedung 3" instance=ExtResource("1_7ceyx")]

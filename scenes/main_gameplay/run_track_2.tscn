@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2lnu3pwlv22y"]
+
+[ext_resource type="PackedScene" uid="uid://ca624ddces8xi" path="res://assets/models/environment/racetrackx2.blend" id="1_44mrd"]
+[ext_resource type="PackedScene" uid="uid://cue7jt3polfvs" path="res://scenes/main_gameplay/turn_box.tscn" id="2_3bm8x"]
+
+[node name="racetrackx2" instance=ExtResource("1_44mrd")]
+
+[node name="TurnBox" parent="." index="35" instance=ExtResource("2_3bm8x")]
+
+[node name="TurnBox2" parent="." index="36" instance=ExtResource("2_3bm8x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.7625, 0, 37.569)
+
+[node name="TurnBox3" parent="." index="37" instance=ExtResource("2_3bm8x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.9376, 0, -28.2115)
+
+[node name="TurnBox4" parent="." index="38" instance=ExtResource("2_3bm8x")]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 15.944, 0, -28.7401)
+
+[node name="TurnBox5" parent="." index="39" instance=ExtResource("2_3bm8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.944, 0, 5.36232)
+activate_other = NodePath("../TurnBox6")
+
+[node name="TurnBox6" parent="." index="40" instance=ExtResource("2_3bm8x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.414586, 0, 5.36232)
+visible = false

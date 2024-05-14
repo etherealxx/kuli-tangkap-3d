@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cue7jt3polfvs"]
+
+[ext_resource type="Script" path="res://scripts/main_gameplay/TurnBox.gd" id="1_3wdaq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkof2"]
+size = Vector3(5.71094, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_76e51"]
+size = Vector3(5.711, 1, 5.85791)
+
+[node name="TurnBox" type="Area3D" groups=["turnbox"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37.569)
+script = ExtResource("1_3wdaq")
+turn_type = "right"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180527, 1.39278, 1.44426)
+shape = SubResource("BoxShape3D_rkof2")
+
+[node name="SquareIndicator" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148525, 1.39278, 0.348835)
+shape = SubResource("BoxShape3D_76e51")
+disabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

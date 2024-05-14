@@ -20,7 +20,7 @@ func _process(delta):
 func catched():
 	is_catched = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_catched:
 		if get_scale() < Vector3(0.5, 0.5, 0.5):
 			queue_free()

@@ -2826,4 +2826,5 @@ outline_size = 97
 
 [connection signal="body_entered" from="CatchHitbox" to="." method="_on_catch_hitbox_body_entered"]
 [connection signal="body_entered" from="DeathHitbox" to="." method="_on_death_hitbox_body_entered"]
+[connection signal="area_entered" from="DestroyHitbox" to="." method="_on_destroy_hitbox_area_entered"]
 [connection signal="body_entered" from="DestroyHitbox" to="." method="_on_destroy_hitbox_body_entered"]

@@ -6,20 +6,21 @@ extends CharacterBody3D
 const JUMP_VELOCITY := 4.5
 
 var moving_while_catching_speed := 7.0
-var running_speed := 2.0
+var running_speed := 6.0
 var score := 0
-
+var turn = "straight"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 signal gameover
+signal switchtorunning
 
 enum PlayerState {CATCHING, CUTSCENE, RUNNING, TETRIS = -1}
 
 var state : PlayerState
 
 func _ready():
-	var state = PlayerState.CATCHING
+	state = PlayerState.CATCHING
 	animplyr.play("moving_sideway3", -1, 2.0)
 	animplyr.pause()
 	print(animplyr.get_current_animation_length())
@@ -58,10 +59,17 @@ func _physics_process(delta):
 			velocity.z = move_toward(velocity.z, 0, moving_while_catching_speed)
 			
 	elif state == PlayerState.RUNNING:
-		velocity.x = 0
-		velocity.z = running_speed
-		
-	move_and_slide()
+		velocity.x = running_speed * sin(rotation.y)
+		velocity.z = running_speed * cos(rotation.y)
+		print("rotation degree: %f ; X: %f ; Z: %f" % [rotation_degrees.y, velocity.x, velocity.z])
+		#match turn:
+			#"left":
+				#rotation_degrees.y += 1
+			#"right":
+				#rotation_degrees.y -= 1
+	
+	if turn == "straight":
+		move_and_slide()
 	
 	if state == PlayerState.CATCHING:
 		if animplyr.get_current_animation() == "moving_sideway3":
@@ -78,11 +86,41 @@ func _on_catch_hitbox_body_entered(body):
 	if body is StaticBody3D and body.is_in_group("catchable") and state == PlayerState.CATCHING:
 		body.catched()
 		add_score()
-			
+		if score >= 10:
+			switchtorunning.emit()
+
 func _on_death_hitbox_body_entered(body):
 	if body is StaticBody3D and body.is_in_group("cankill") and state == PlayerState.CATCHING:
 		gameover.emit()
 
 func _on_destroy_hitbox_body_entered(body):
-	if body is StaticBody3D and body.is_in_group("destroyable") and state == PlayerState.CATCHING:
-		body.catched()
+	if body is StaticBody3D:
+		if body.is_in_group("destroyable") and state == PlayerState.CATCHING:
+			body.catched()
+
+func _on_destroy_hitbox_area_entered(area): #bottom part of body
+	if area.is_in_group("turnbox"):
+		turn = area.get_turn_type()
+		print("turning to: " + turn)
+		rotate_player()
+		#var turntimer : Timer = Timer.new()
+		#turntimer.timeout.connect(_on_turn_complete.bind(turntimer))
+		#turntimer.one_shot = true
+		#add_child(turntimer)
+		#turntimer.start(1.0)
+
+func rotate_player():
+	var turn_degree
+	match turn:
+		"left":
+			turn_degree = 90
+		"right":
+			turn_degree = -90
+	var tween = create_tween()
+	tween.tween_property(self, "rotation_degrees:y", turn_degree, 0.5).as_relative().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_callback(func() : turn = "straight")
+	
+#func _on_turn_complete(timer):
+	##turn = "straight"
+	#timer.queue_free()
+	
