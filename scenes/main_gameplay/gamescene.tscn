@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8kll4qow8gaf"]
+[gd_scene load_steps=22 format=3 uid="uid://8kll4qow8gaf"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/gamescene.gd" id="1_4cdgf"]
 [ext_resource type="PackedScene" uid="uid://c0nini266ff55" path="res://assets/models/environment/lahan.fbx" id="2_x46d2"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://u2rhwop4b57x" path="res://scenes/main_gameplay/low_poly_truck.tscn" id="5_yqbdp"]
 [ext_resource type="Script" path="res://scripts/main_gameplay/gameoverui.gd" id="7_pbo13"]
 [ext_resource type="PackedScene" uid="uid://bbf15spwf84ah" path="res://scenes/main_gameplay/runtrack_fromblender.tscn" id="8_fx7ic"]
-[ext_resource type="Texture2D" uid="uid://hh3pp6vehwuu" path="res://assets/models/environment/photo_6203922453839854234_y.jpg" id="9_lajtm"]
 [ext_resource type="PackedScene" uid="uid://daf1kasf8li46" path="res://scenes/main_gameplay/city/gedung_3.tscn" id="10_hpw4c"]
 [ext_resource type="PackedScene" uid="uid://df68n2y08xotn" path="res://assets/models/environment/Gedung 2.blend" id="11_rbn5a"]
 [ext_resource type="PackedScene" uid="uid://djfmil2jll1c3" path="res://scenes/main_gameplay/city/gedung_1.tscn" id="12_sg2da"]
@@ -183,16 +182,6 @@ text = "Retry"
 [node name="racetrackx" parent="." instance=ExtResource("8_fx7ic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.187796, 9.499)
 visible = false
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.04189, 4.92153, 14.8988)
-visible = false
-texture = ExtResource("9_lajtm")
-
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 3.0329, 4.92153, 14.8988)
-visible = false
-texture = ExtResource("9_lajtm")
 
 [node name="City" type="Node3D" parent="."]
 
