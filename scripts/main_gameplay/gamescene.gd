@@ -53,3 +53,7 @@ func switch_to_running():
 func _after_transition_to_running():
 	character.change_state(character.PlayerState.RUNNING)
 	camera.reparent(character)
+
+func _on_debug_print_interval_timeout():
+	if character.debugtexttoprint != "":
+		print(character.debugtexttoprint)

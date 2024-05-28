@@ -3,15 +3,16 @@ extends CharacterBody3D
 #@onready var semen_ref = load
 @onready var animplyr : AnimationPlayer = $AnimationPlayer
 
-const JUMP_VELOCITY := 4.5
+const JUMP_VELOCITY := 9.0
 
 var moving_while_catching_speed := 7.0
 var running_speed := 6.0
 var score := 0
 var turn = "straight"
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 2
 var changinglane := false
+var debugtexttoprint := ""
 
 signal gameover
 signal switchtorunning
@@ -44,7 +45,6 @@ func change_lane(movetype : String):
 
 func change_lane_direction(direction: String):
 	changinglane = true
-	var tween = create_tween()
 	var target_position = position
 	var pos_axis_to_change : String
 	var final_target_position
@@ -72,7 +72,11 @@ func change_lane_direction(direction: String):
 		target_position.z += 2.0 if direction == "left" else -2.0
 		pos_axis_to_change = "position:z"
 		final_target_position = target_position.z
-
+	
+	if not pos_axis_to_change or not final_target_position:
+		return
+		
+	var tween = create_tween()
 	tween.tween_property(self, pos_axis_to_change, final_target_position, 0.3)
 	tween.tween_callback(func() : change_lane(direction))
 
@@ -80,10 +84,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	## Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
+		
 	match (state):
 		PlayerState.CATCHING:
 			# Get the input direction and handle the movement/deceleration.
@@ -111,12 +112,16 @@ func _physics_process(delta):
 			velocity.z = running_speed * cos(rotation.y)
 			##TODO benerin biar jalan ke semua jenis rotasi!
 			if not changinglane:
-				if Input.is_action_just_pressed("ui_left") and lane != RunningLane.LEFT and turn == "straight":
+				if Input.is_action_just_pressed("ui_left") and lane != RunningLane.LEFT:
 					change_lane_direction("left")
-				elif Input.is_action_just_pressed("ui_right") and lane != RunningLane.RIGHT and turn == "straight":
+				elif Input.is_action_just_pressed("ui_right") and lane != RunningLane.RIGHT:
 					change_lane_direction("right")
+				## Handle jump.
+				elif Input.is_action_just_pressed("ui_up") and is_on_floor():
+					velocity.y = JUMP_VELOCITY
 			
-			print("rotation degree: %f ; X: %f ; Z: %f" % [rotation_degrees.y, velocity.x, velocity.z])
+			debugtexttoprint = "rotation degree: %f ; X: %f ; Z: %f" % [rotation_degrees.y, velocity.x, velocity.z]
+			
 			#match turn:
 				#"left":
 					#rotation_degrees.y += 1
@@ -155,26 +160,34 @@ func _on_destroy_hitbox_body_entered(body):
 
 func _on_destroy_hitbox_area_entered(area): #bottom part of body
 	if area.is_in_group("turnbox"):
-		turn = area.get_turn_type()
-		print("turning to: " + turn)
-		rotate_player()
+		if area.activated == false:
+			area.activate() # trigger turning
+			turn = area.get_turn_type()
+			print("triggered %s" % area.name)
+			print("turning to: " + turn)
+			rotate_player()
 		#var turntimer : Timer = Timer.new()
 		#turntimer.timeout.connect(_on_turn_complete.bind(turntimer))
 		#turntimer.one_shot = true
 		#add_child(turntimer)
 		#turntimer.start(1.0)
 
+func after_rotate():
+	lane = RunningLane.MIDDLE
+	turn = "straight"
+	changinglane = false
+	
 func rotate_player():
+	changinglane = true
 	var turn_degree
 	match turn:
 		"left":
 			turn_degree = 90
 		"right":
 			turn_degree = -90
-	lane = RunningLane.MIDDLE
 	var tween = create_tween()
 	tween.tween_property(self, "rotation_degrees:y", turn_degree, 0.5).as_relative().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_callback(func() : turn = "straight")
+	tween.tween_callback(after_rotate)
 	
 #func _on_turn_complete(timer):
 	##turn = "straight"
