@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgse85twuhex"]
+
+[ext_resource type="PackedScene" uid="uid://cwhdbnrmda04s" path="res://assets/models/environment/citylayout.blend" id="1_ickxa"]
+
+[node name="citylayout" instance=ExtResource("1_ickxa")]

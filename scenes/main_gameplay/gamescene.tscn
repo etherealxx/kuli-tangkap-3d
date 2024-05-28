@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8kll4qow8gaf"]
+[gd_scene load_steps=21 format=3 uid="uid://8kll4qow8gaf"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/gamescene.gd" id="1_4cdgf"]
 [ext_resource type="PackedScene" uid="uid://c0nini266ff55" path="res://assets/models/environment/lahan.fbx" id="2_x46d2"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scenes/main_gameplay/DestroyArea.gd" id="5_1iuk8"]
 [ext_resource type="PackedScene" uid="uid://u2rhwop4b57x" path="res://scenes/main_gameplay/low_poly_truck.tscn" id="5_yqbdp"]
 [ext_resource type="Script" path="res://scripts/main_gameplay/gameoverui.gd" id="7_pbo13"]
-[ext_resource type="PackedScene" uid="uid://cfm7t750wa5ii" path="res://scenes/main_gameplay/city/city.tscn" id="9_heuhk"]
+[ext_resource type="PackedScene" uid="uid://bgse85twuhex" path="res://scenes/main_gameplay/city/citylayout.tscn" id="11_s002u"]
 [ext_resource type="PackedScene" uid="uid://d2lnu3pwlv22y" path="res://scenes/main_gameplay/run_track_2.tscn" id="14_f1u3f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6vew0"]
@@ -36,6 +36,17 @@ size = Vector3(20, 0.2, 20)
 [sub_resource type="LabelSettings" id="LabelSettings_am2wf"]
 font_size = 166
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vhp0"]
+disable_fog = true
+albedo_color = Color(0.458405, 0.458405, 0.458405, 1)
+metallic_specular = 0.0
+roughness = 0.0
+clearcoat_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wmucs"]
+material = SubResource("StandardMaterial3D_1vhp0")
+size = Vector2(65, 94.655)
+
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_4cdgf")
 
@@ -62,6 +73,8 @@ shape = SubResource("BoxShape3D_ifine")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.00295715, 0.589047, -0.808093, 0.00405682, 0.808083, 0.589055, 0.999987, -0.00502022, -3.55394e-08, -9.31329, 7.34146, 10.423)
 shadow_enabled = true
+shadow_opacity = 0.5
+shadow_blur = 2.0
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0.575, 2.902, 9.55)
@@ -176,14 +189,18 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 71
 text = "Retry"
 
-[node name="City" parent="." instance=ExtResource("9_heuhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392496, 0)
-
 [node name="racetrackx2" parent="." instance=ExtResource("14_f1u3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.415047, 9.499)
 
 [node name="DebugPrintInterval" type="Timer" parent="."]
 autostart = true
+
+[node name="citylayout" parent="." instance=ExtResource("11_s002u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.949191, 9.60083)
+
+[node name="CityFloor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513981, 14.297)
+mesh = SubResource("PlaneMesh_wmucs")
 
 [connection signal="body_entered" from="DestroyArea" to="DestroyArea" method="_on_body_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

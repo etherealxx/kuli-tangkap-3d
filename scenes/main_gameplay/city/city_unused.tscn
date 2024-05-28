@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfm7t750wa5ii"]
+[gd_scene load_steps=6 format=3 uid="uid://2bxeat0pdide"]
 
-[ext_resource type="PackedScene" uid="uid://daf1kasf8li46" path="res://scenes/main_gameplay/city/gedung_3.tscn" id="1_yap4t"]
-[ext_resource type="PackedScene" uid="uid://df68n2y08xotn" path="res://assets/models/environment/Gedung 2.blend" id="2_lqx1a"]
-[ext_resource type="PackedScene" uid="uid://djfmil2jll1c3" path="res://scenes/main_gameplay/city/gedung_1.tscn" id="3_a6tr0"]
+[ext_resource type="PackedScene" uid="uid://daf1kasf8li46" path="res://scenes/main_gameplay/city/gedung_3.tscn" id="1_t1srs"]
+[ext_resource type="PackedScene" uid="uid://df68n2y08xotn" path="res://assets/models/environment/Gedung 2.blend" id="2_hhnc2"]
+[ext_resource type="PackedScene" uid="uid://djfmil2jll1c3" path="res://scenes/main_gameplay/city/gedung_1.tscn" id="3_7y2ej"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vhp0"]
 disable_fog = true
@@ -17,124 +17,124 @@ size = Vector2(65, 103)
 
 [node name="City" type="Node3D"]
 
-[node name="Gedung 3" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 3" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 8.25003, -1.09018, 22.8248)
 
-[node name="Gedung 14" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 14" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.37689, -1.09018, 33.8297)
 
-[node name="Gedung 15" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 15" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.3452, -1.09018, 34.8342)
 
-[node name="Gedung 2" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 2" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.34291, -0.825656, 22.4881)
 
-[node name="Gedung 8" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 8" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -12.1406, -0.825656, 34.7012)
 
-[node name="Gedung 20" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 20" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -12.5575, -0.825656, 16.4071)
 
-[node name="Gedung 28" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 28" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -12.5575, -0.825656, 0.395405)
 
-[node name="Gedung 19" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 19" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.2014, -0.825656, 19.4668)
 
-[node name="Gedung 30" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 30" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.2014, -0.825656, -18.4146)
 
-[node name="Gedung 10" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 10" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.31178, -0.825656, 39.9365)
 
-[node name="Gedung 23" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 23" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.502, -1.09018, -2.58251)
 
-[node name="Gedung 24" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 24" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.123, -0.825656, -10.2806)
 
-[node name="Gedung 29" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 29" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.0822, -0.825656, -26.6649)
 
-[node name="Gedung 25" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 25" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.123, -0.825656, 3.96377)
 
-[node name="Gedung 1" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 1" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7.95152, -0.491154, 31.2682)
 
-[node name="Gedung 31" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 31" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 14.645, -0.491154, 22.6009)
 
-[node name="Gedung 22" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 22" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -26.8525, -0.491154, 11.1655)
 
-[node name="Gedung 21" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 21" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -11.1605, -0.491154, 28.0913)
 
-[node name="Gedung 26" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 26" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -12.5518, -0.491154, 8.95769)
 
-[node name="Gedung 27" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 27" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -12.5518, -0.491154, -5.56741)
 
-[node name="Gedung 40" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 40" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -15.242, -0.491154, -27.5912)
 
-[node name="Gedung 9" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 9" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -12.5518, -0.491154, 40.2121)
 
-[node name="Gedung 4" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 4" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 5.98407, -1.09018, 55.5576)
 
-[node name="Gedung 16" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 16" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -26.2939, -1.09018, 55.5576)
 
-[node name="Gedung 17" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 17" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -27.148, -1.09018, 26.3615)
 
-[node name="Gedung 12" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 12" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -11.5902, -1.09018, 55.5576)
 
-[node name="Gedung 5" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 5" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 8.01585, -0.825656, 42.3245)
 
-[node name="Gedung 32" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 32" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 22.7107, -1.09018, -15.7818)
 
-[node name="Gedung 33" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 33" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 22.8515, -0.491154, -7.33835)
 
-[node name="Gedung 34" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 34" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 22.8612, -1.09018, 13.5067)
 
-[node name="Gedung 35" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 35" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 22.6853, -0.825656, 3.71789)
 
-[node name="Gedung 41" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 41" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 22.3192, -0.825656, 22.253)
 
-[node name="Gedung 36" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 36" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, -5.60304, -1.09018, -28.9556)
 
-[node name="Gedung 37" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 37" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(-1.09278e-07, 0, 2.5, 0, 2.5, 0, -2.5, 0, -1.09278e-07, 2.84041, -0.491154, -27.8516)
 
-[node name="Gedung 38" parent="." instance=ExtResource("1_yap4t")]
+[node name="Gedung 38" parent="." instance=ExtResource("1_t1srs")]
 transform = Transform3D(2.5, 0, -1.42109e-14, 0, 2.5, 0, 1.42109e-14, 0, 2.5, 26.1253, -1.09018, -28.2274)
 
-[node name="Gedung 39" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 39" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(2.5, 0, -1.42109e-14, 0, 2.5, 0, 1.42109e-14, 0, 2.5, 13.8966, -0.825656, -28.5641)
 
-[node name="Gedung 13" parent="." instance=ExtResource("2_lqx1a")]
+[node name="Gedung 13" parent="." instance=ExtResource("2_hhnc2")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -26.7042, -0.825656, 42.3245)
 
-[node name="Gedung 6" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 6" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -2.45939, -0.491154, 55.1817)
 
-[node name="Gedung 11" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 11" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -19.814, -0.491154, 55.1817)
 
-[node name="Gedung 18" parent="." instance=ExtResource("3_a6tr0")]
+[node name="Gedung 18" parent="." instance=ExtResource("3_7y2ej")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, -26.7264, -0.491154, 48.3492)
 
 [node name="CityFloor" type="MeshInstance3D" parent="."]
