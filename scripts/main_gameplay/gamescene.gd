@@ -41,6 +41,8 @@ func _on_debug_button_pressed():
 	switch_to_running()
 	
 func switch_to_running():
+	for fallingobject in get_tree().get_nodes_in_group("fallingobject"):
+		fallingobject.stopfall = true
 	character.change_state(character.PlayerState.CUTSCENE)
 	var tween = create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)

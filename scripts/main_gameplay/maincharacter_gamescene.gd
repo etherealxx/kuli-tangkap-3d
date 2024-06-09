@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 #@onready var semen_ref = load
-@onready var animplyr : AnimationPlayer = $AnimationPlayer
+@onready var animplyr : AnimationPlayer = $maincharacter_imported/AnimationPlayer #$AnimationPlayer
 
 const JUMP_VELOCITY := 9.0
 

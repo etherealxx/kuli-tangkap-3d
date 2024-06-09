@@ -84,7 +84,7 @@ shadow_mesh = SubResource("ArrayMesh_7pxwv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ok1ew"]
 size = Vector3(9.38867, 1, 5.72363)
 
-[node name="semen" type="StaticBody3D"]
+[node name="semen" type="StaticBody3D" groups=["fallingobject"]]
 transform = Transform3D(1.52855e-16, 3.49691e-09, -0.08, 0.08, -3.49691e-09, 2.51463e-22, -3.49691e-09, -0.08, -3.49691e-09, 0, 0, 0)
 script = ExtResource("2_0wleq")
 

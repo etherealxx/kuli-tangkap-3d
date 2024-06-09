@@ -55,7 +55,7 @@ shadow_mesh = SubResource("ArrayMesh_f3nbk")
 [sub_resource type="BoxShape3D" id="BoxShape3D_qe4fa"]
 size = Vector3(0.455383, 0.325134, 0.422729)
 
-[node name="rock" type="StaticBody3D"]
+[node name="rock" type="StaticBody3D" groups=["fallingobject"]]
 script = ExtResource("1_53wln")
 
 [node name="Sketchfab_model" type="Node3D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8kll4qow8gaf"]
+[gd_scene load_steps=18 format=3 uid="uid://8kll4qow8gaf"]
 
 [ext_resource type="Script" path="res://scripts/main_gameplay/gamescene.gd" id="1_4cdgf"]
 [ext_resource type="PackedScene" uid="uid://c0nini266ff55" path="res://assets/models/environment/lahan.fbx" id="2_x46d2"]
@@ -19,9 +19,6 @@ sky_material = SubResource("ProceduralSkyMaterial_6vew0")
 background_mode = 2
 background_energy_multiplier = 1.3
 sky = SubResource("Sky_yp0d6")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ifine"]
-size = Vector3(13.9287, 0.376526, 0.841858)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lf0cb"]
 data = PackedVector3Array(-10, 0.1, 10, 10, 0.1, 10, -10, -0.1, 10, 10, 0.1, 10, 10, -0.1, 10, -10, -0.1, 10, 10, 0.1, -10, -10, 0.1, -10, 10, -0.1, -10, -10, 0.1, -10, -10, -0.1, -10, 10, -0.1, -10, 10, 0.1, 10, 10, 0.1, -10, 10, -0.1, 10, 10, 0.1, -10, 10, -0.1, -10, 10, -0.1, 10, -10, 0.1, -10, -10, 0.1, 10, -10, -0.1, -10, -10, 0.1, 10, -10, -0.1, 10, -10, -0.1, -10, 10, 0.1, 10, -10, 0.1, 10, 10, 0.1, -10, -10, 0.1, 10, -10, 0.1, -10, 10, 0.1, -10, -10, -0.1, 10, 10, -0.1, 10, -10, -0.1, -10, 10, -0.1, 10, 10, -0.1, -10, -10, -0.1, -10)
@@ -58,13 +55,6 @@ transform = Transform3D(495.2, 1.81899e-12, 1.27866e-06, 4.32918e-05, -8.85487e-
 [node name="Sun" parent="Root Scene2/RootNode" index="6"]
 transform = Transform3D(0.804219, 0.503674, 0.315504, -0.411246, 0.854844, -0.316416, -0.429078, 0.124718, 0.894616, 19.9873, 17.2627, 0)
 visible = false
-
-[node name="Area3D" type="Area3D" parent="Root Scene2"]
-transform = Transform3D(1.02394, 0, 0, 0, 1.02394, 0, 0, 0, 1.02394, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene2/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 16.7838, 2.02188, 0.171236, -0.242265)
-shape = SubResource("BoxShape3D_ifine")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.00295715, 0.589047, -0.808093, 0.00405682, 0.808083, 0.589055, 0.999987, -0.00502022, -3.55394e-08, -9.31329, 7.34146, 10.423)
