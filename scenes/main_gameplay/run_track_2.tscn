@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2lnu3pwlv22y"]
+[gd_scene load_steps=6 format=3 uid="uid://d2lnu3pwlv22y"]
 
 [ext_resource type="PackedScene" uid="uid://c4j5mugmmwtl5" path="res://assets/models/environment/racetrackx2.blend" id="1_44mrd"]
 [ext_resource type="PackedScene" uid="uid://cue7jt3polfvs" path="res://scenes/main_gameplay/turn_box.tscn" id="2_3bm8x"]
+[ext_resource type="PackedScene" uid="uid://cau1icqniernj" path="res://scenes/main_gameplay/death_colliders.tscn" id="3_7lkh5"]
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_2vl03"]
 
@@ -39,3 +40,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackStaticBodyMesh/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_g16iu")
+
+[node name="Hurdles" type="Node3D" parent="." index="42"]
+
+[node name="DeathColliders" parent="Hurdles" index="0" instance=ExtResource("3_7lkh5")]
