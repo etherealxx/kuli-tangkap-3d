@@ -15,7 +15,7 @@ size = Vector3(1.79279, 1, 0.483398)
 [sub_resource type="BoxShape3D" id="BoxShape3D_56exu"]
 size = Vector3(3.67679, 1, 0.483398)
 
-[node name="DeathColliders" type="Area3D"]
+[node name="DeathColliders" type="Area3D" groups=["deathcolliders"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564824, 15.7821)

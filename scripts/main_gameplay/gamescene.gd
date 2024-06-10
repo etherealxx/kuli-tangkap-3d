@@ -8,6 +8,8 @@ var batu = preload("res://scenes/main_gameplay/rock.tscn")
 @onready var character = $maincharacter
 @onready var camera = $MainCamera
 
+@export var debugprint := false
+
 func add_to_these_group(node : Node, grouplist : Array[String]):
 	for groupname in grouplist:
 		node.add_to_group(groupname)
@@ -44,6 +46,7 @@ func switch_to_running():
 	for fallingobject in get_tree().get_nodes_in_group("fallingobject"):
 		fallingobject.stopfall = true
 	character.change_state(character.PlayerState.CUTSCENE)
+	character.anim = character.PlayerAnim.RUNNING
 	var tween = create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(camera, "position", Vector3(0.145, 3.7, 8), 1.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
@@ -55,7 +58,9 @@ func switch_to_running():
 func _after_transition_to_running():
 	character.change_state(character.PlayerState.RUNNING)
 	camera.reparent(character)
+	character.get_node("ScoreLabel").hide()
+	
 
 func _on_debug_print_interval_timeout():
-	if character.debugtexttoprint != "":
+	if character.debugtexttoprint != "" and debugprint:
 		print(character.debugtexttoprint)
