@@ -17,8 +17,9 @@ var debugtexttoprint := ""
 
 signal gameover
 signal switchtorunning
+signal winning
 
-enum PlayerState {CATCHING, CUTSCENE, RUNNING, TETRIS = -1}
+enum PlayerState {MENU, CATCHING, CUTSCENE, RUNNING, TETRIS = -1}
 enum RunningLane {LEFT, MIDDLE, RIGHT = -1}
 enum PlayerAnim {IDLE, MOVING, RUNNING, JUMP = -1}
 
@@ -26,10 +27,10 @@ var state : PlayerState
 var lane : RunningLane
 var anim : PlayerAnim
 
-var animblendvalue = [0,0,0]
+var animblendvalue = [0,0,0,0]
 
 func _ready():
-	state = PlayerState.CATCHING
+	state = PlayerState.MENU # PlayerState.CATCHING
 	lane = RunningLane.MIDDLE
 	anim = PlayerAnim.IDLE
 	#print(str(animtree.get_property_list()))
@@ -92,22 +93,27 @@ func animlerp(array : Array, delta):
 		lerpf(animblendvalue[0], array[0], 15*delta),
 		lerpf(animblendvalue[1], array[1], 15*delta),
 		lerpf(animblendvalue[2], array[2], 15*delta),
+		lerpf(animblendvalue[3], array[3], 15*delta)
 	]
 
 func handle_anim(delta):
-	match (anim):
-		PlayerAnim.IDLE:
-			animlerp([0,0,0], delta)
-		PlayerAnim.MOVING:
-			animlerp([1,0,0], delta)
-		PlayerAnim.RUNNING:
-			animlerp([0,1,0], delta)
-		PlayerAnim.JUMP:
-			animlerp([0,0,1], delta)
+	if state == PlayerState.MENU:
+		animlerp([0,0,0,0], delta)
+	else:
+		match (anim):
+			PlayerAnim.IDLE:
+				animlerp([1,0,0,0], delta)
+			PlayerAnim.MOVING:
+				animlerp([1,1,0,0], delta)
+			PlayerAnim.RUNNING:
+				animlerp([1,0,1,0], delta)
+			PlayerAnim.JUMP:
+				animlerp([1,0,0,1], delta)
 	
-	animtree["parameters/MoveBlend/blend_amount"] = animblendvalue[0]
-	animtree["parameters/RunBlend/blend_amount"] = animblendvalue[1]
-	animtree["parameters/JumpBlend/blend_amount"] = animblendvalue[2]
+	animtree["parameters/IdleBlend/blend_amount"] = animblendvalue[0]
+	animtree["parameters/MoveBlend/blend_amount"] = animblendvalue[1]
+	animtree["parameters/RunBlend/blend_amount"] = animblendvalue[2]
+	animtree["parameters/JumpBlend/blend_amount"] = animblendvalue[3]
 	
 func _physics_process(delta):
 	print(str(animtree["parameters/jumping/time"]))
@@ -157,7 +163,8 @@ func _physics_process(delta):
 					anim = PlayerAnim.JUMP
 					#animplyr.play("Jump")
 			if anim == PlayerAnim.JUMP:
-				if abs(animtree["parameters/jumping/time"] - 1.0) < 0.001:
+				#if abs(animtree["parameters/jumping/time"] - 1.3) < 0.001:
+				if animtree["parameters/jumping/time"] > 1.299:
 					anim = PlayerAnim.RUNNING
 			debugtexttoprint = "rotation degree: %f ; X: %f ; Z: %f" % [rotation_degrees.y, velocity.x, velocity.z]
 	
@@ -203,11 +210,11 @@ func _on_destroy_hitbox_body_entered(body):
 
 func _on_destroy_hitbox_area_entered(area): #bottom part of body
 	if area.is_in_group("turnbox"):
-		if area.activated == false:
-			area.activate() # trigger turning
+		if !area.triggered and !area.block_trigger:
+			area.trigger() # trigger turning
 			turn = area.get_turn_type()
-			print("triggered %s" % area.name)
-			print("turning to: " + turn)
+			#print("triggered %s" % area.name)
+			#print("turning to: " + turn)
 			rotate_player()
 		#var turntimer : Timer = Timer.new()
 		#turntimer.timeout.connect(_on_turn_complete.bind(turntimer))
@@ -216,7 +223,10 @@ func _on_destroy_hitbox_area_entered(area): #bottom part of body
 		#turntimer.start(1.0)
 	elif area.is_in_group("deathcolliders"):
 		gameover.emit()
-
+	elif area.is_in_group("winningbox"):
+		if !area.triggered and !area.block_trigger:
+			winning.emit()
+		
 func after_rotate():
 	lane = RunningLane.MIDDLE
 	turn = "straight"

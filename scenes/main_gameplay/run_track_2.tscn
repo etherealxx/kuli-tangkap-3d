@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2lnu3pwlv22y"]
+[gd_scene load_steps=9 format=3 uid="uid://d2lnu3pwlv22y"]
 
 [ext_resource type="PackedScene" uid="uid://c4j5mugmmwtl5" path="res://assets/models/environment/racetrackx2.blend" id="1_44mrd"]
 [ext_resource type="PackedScene" uid="uid://cue7jt3polfvs" path="res://scenes/main_gameplay/turn_box.tscn" id="2_3bm8x"]
 [ext_resource type="PackedScene" uid="uid://cau1icqniernj" path="res://scenes/main_gameplay/death_colliders.tscn" id="3_7lkh5"]
+[ext_resource type="Script" path="res://scripts/main_gameplay/TurnBox.gd" id="3_a3kcs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lvud0"]
+size = Vector3(5.71094, 2.73438, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_76e51"]
+size = Vector3(5.711, 1, 5.85791)
 
 [sub_resource type="PlaceholderMesh" id="PlaceholderMesh_2vl03"]
 
@@ -12,26 +19,52 @@ data = PackedVector3Array(-1, -0.0803, 34.9543, -1, 0.4595, -1, -1, 0.4595, 34.9
 [node name="racetrackx2" instance=ExtResource("1_44mrd")]
 
 [node name="TurnBox" parent="." index="35" instance=ExtResource("2_3bm8x")]
+toggle_on_other = NodePath("")
+block_trigger = false
 
 [node name="TurnBox2" parent="." index="36" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.7625, 0, 37.569)
+toggle_on_other = NodePath("")
+block_trigger = false
 
 [node name="TurnBox3" parent="." index="37" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.9376, 0, -28.2115)
+toggle_on_other = NodePath("")
+block_trigger = false
 
 [node name="TurnBox4" parent="." index="38" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 15.944, 0, -28.7401)
+toggle_on_other = NodePath("")
+block_trigger = false
 
 [node name="TurnBox5" parent="." index="39" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.944, 0, 5.36232)
 toggle_on_other = NodePath("../TurnBox6")
+block_trigger = false
 
 [node name="TurnBox6" parent="." index="40" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.414586, 0, 5.36232)
 visible = false
-activated = true
+toggle_on_other = NodePath("../WinningBox")
+block_trigger = true
 
-[node name="TrackStaticBodyMesh" type="MeshInstance3D" parent="." index="41"]
+[node name="WinningBox" type="Area3D" parent="." index="41" groups=["winningbox"]]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.414586, 0, 1.05658)
+visible = false
+script = ExtResource("3_a3kcs")
+turn_type = "right"
+block_trigger = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WinningBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180527, 2.25997, 1.44426)
+shape = SubResource("BoxShape3D_lvud0")
+
+[node name="SquareIndicator" type="CollisionShape3D" parent="WinningBox" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148525, 1.39278, 0.348835)
+shape = SubResource("BoxShape3D_76e51")
+disabled = true
+
+[node name="TrackStaticBodyMesh" type="MeshInstance3D" parent="." index="42"]
 transform = Transform3D(3.00326, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.410263, 0)
 mesh = SubResource("PlaceholderMesh_2vl03")
 skeleton = NodePath("")
@@ -41,6 +74,8 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrackStaticBodyMesh/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_g16iu")
 
-[node name="Hurdles" type="Node3D" parent="." index="42"]
+[node name="Hurdles" type="Node3D" parent="." index="43"]
 
 [node name="DeathColliders" parent="Hurdles" index="0" instance=ExtResource("3_7lkh5")]
+
+[connection signal="area_entered" from="WinningBox" to="WinningBox" method="_on_area_entered"]

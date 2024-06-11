@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="GameDesign3D"
+config/name="Kuli Madness"
 run/main_scene="res://scenes/main_gameplay/gamescene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalVar="*res://scripts/autoloads/globalvar.gd"
 
 [input]
 
