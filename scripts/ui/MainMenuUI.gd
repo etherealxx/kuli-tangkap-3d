@@ -35,8 +35,9 @@ func _on_play():
 	tween.tween_callback(func(): playstart.emit())
 	
 func _on_window_resize():
-	var viewport_reso = get_viewport().get_visible_rect().size
-	viewport_width = viewport_reso.y
-	menu_right.size.y = viewport_width
-	title.size.y = viewport_width * menu_to_title_scaling
+	#var viewport_reso = get_viewport().get_visible_rect().size
+	#viewport_width = viewport_reso.y
+	#menu_right.size.y = viewport_width
+	#title.size.y = viewport_width * menu_to_title_scaling
+	pass
 	

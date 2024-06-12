@@ -116,7 +116,7 @@ func handle_anim(delta):
 	animtree["parameters/JumpBlend/blend_amount"] = animblendvalue[3]
 	
 func _physics_process(delta):
-	print(str(animtree["parameters/jumping/time"]))
+	#print(str(animtree["parameters/jumping/time"]))
 	handle_anim(delta)
 	# Add the gravity.
 	if not is_on_floor():

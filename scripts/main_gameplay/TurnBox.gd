@@ -16,6 +16,6 @@ func trigger():
 func _on_area_entered(_area):
 		if toggle_on_other and !othertoggled:
 			othertoggled = true
-			print("%s activating %s" % [self.name, get_node(toggle_on_other).name])
+			#print("%s activating %s" % [self.name, get_node(toggle_on_other).name])
 			get_node(toggle_on_other).show()
 			get_node(toggle_on_other).block_trigger = false

@@ -19,28 +19,19 @@ data = PackedVector3Array(-1, -0.0803, 34.9543, -1, 0.4595, -1, -1, 0.4595, 34.9
 [node name="racetrackx2" instance=ExtResource("1_44mrd")]
 
 [node name="TurnBox" parent="." index="35" instance=ExtResource("2_3bm8x")]
-toggle_on_other = NodePath("")
-block_trigger = false
 
 [node name="TurnBox2" parent="." index="36" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.7625, 0, 37.569)
-toggle_on_other = NodePath("")
-block_trigger = false
 
 [node name="TurnBox3" parent="." index="37" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -18.9376, 0, -28.2115)
-toggle_on_other = NodePath("")
-block_trigger = false
 
 [node name="TurnBox4" parent="." index="38" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 15.944, 0, -28.7401)
-toggle_on_other = NodePath("")
-block_trigger = false
 
 [node name="TurnBox5" parent="." index="39" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.944, 0, 5.36232)
 toggle_on_other = NodePath("../TurnBox6")
-block_trigger = false
 
 [node name="TurnBox6" parent="." index="40" instance=ExtResource("2_3bm8x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.414586, 0, 5.36232)
